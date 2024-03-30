@@ -1,0 +1,6 @@
+@DemoComp.DemoGrpcClient_HostAddress = http://localhost:5121
+
+GET {{DemoComp.DemoGrpcClient_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
