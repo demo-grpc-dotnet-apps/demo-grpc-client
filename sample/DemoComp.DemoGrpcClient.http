@@ -1,6 +1,6 @@
-@DemoComp.DemoGrpcClient_HostAddress = http://localhost:5121
+@DemoComp.DemoGrpcClient_HostAddress = http://localhost:5269
 
-GET {{DemoComp.DemoGrpcClient_HostAddress}}/weatherforecast/
+GET {{DemoComp.DemoGrpcClient_HostAddress}}/api/v1.0/SayHello?name=John
 Accept: application/json
 
 ###
