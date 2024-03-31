@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "DemoComp.DemoGrpcClient.Messages";
+
+package messages;
+
+// The response message containing the greetings.
+message HelloReply {
+  string message = 1;
+}

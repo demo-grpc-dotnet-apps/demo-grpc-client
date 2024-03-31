@@ -11,7 +11,9 @@ namespace DemoComp.DemoGrpcClient.Test.IntegrationTests.V1.Greeter;
 /// <summary>
 ///     SayHello API の Integration Test Class.
 /// </summary>
-/// <param name="webApplicationFactory"></param>
+/// <param name="webApplicationFactory">
+///     テスト対象のWebアプリケーションのファクトリ
+/// </param>
 public class SayHelloApiTest(WebApplicationFactory<Program> webApplicationFactory)
     : IClassFixture<WebApplicationFactory<Program>>
 {
@@ -75,6 +77,8 @@ public class SayHelloApiTest(WebApplicationFactory<Program> webApplicationFactor
     /// </returns>
     private static string RemoveNewLine(string value)
     {
-        return value.Replace("\r", string.Empty).Replace("\n", string.Empty);
+        return value
+            .Replace("\r", string.Empty)
+            .Replace("\n", string.Empty);
     }
 }

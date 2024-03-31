@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+import "HelloRequest.proto";
+import "HelloReply.proto";
+
+option csharp_namespace = "DemoComp.DemoGrpcClient.Services";
+
+
+package greet;
+
+// The greeting service definition.
+service Greeter {
+  // Sends a greeting
+  rpc SayHello (HelloRequest) returns (HelloReply);
+}
