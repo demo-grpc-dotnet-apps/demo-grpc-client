@@ -1,5 +1,6 @@
 using System.Net.Mime;
-using DemoComp.DemoGrpcClient.Models.Greeter.SayHello;
+using DemoComp.DemoGrpcClient.Models.Api.V1.Greeter.SayHello;
+using DemoComp.DemoGrpcClient.Services.V1.Greeter;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 
@@ -11,14 +12,11 @@ namespace DemoComp.DemoGrpcClient.Controllers.V1.Greeter;
 /// <remarks>
 ///    version: 1.0
 /// </remarks>
-/// <param name="logger">
-///     Logger
-/// </param>
 [ApiController]
 [ApiVersion("1.0")]
 [Route("api/v{version:apiVersion}/[controller]")]
 [Produces(MediaTypeNames.Application.Json)]
-public class SayHelloController : ControllerBase
+public class SayHelloController(GetSayHelloService getSayHelloService) : ControllerBase
 {
     /// <summary>
     ///     Get SayHello Message API.
@@ -30,20 +28,29 @@ public class SayHelloController : ControllerBase
     ///     SayHelloResponse.
     /// </returns>
     [HttpGet]
+    [Consumes(MediaTypeNames.Application.FormUrlEncoded)]
     public ActionResult<SayHelloResponse> Get(string name)
     {
-        // Start Logging
+        // Start
         Log.Information("Received a request. name: {name}", name);
 
-        // Business Logic
-        var responseBody = new SayHelloResponse($"Hello, {name}!");
-        var response = Ok(responseBody);
+        try
+        {
+            // Business Logic
+            var responseBody = getSayHelloService.GetSayHello(name);
 
-        // End Logging
-        Log.Information("Create a response. Status: {response.StatusCode}, Response Body: {responseBody}",
-            response.StatusCode, responseBody);
+            // End
+            Log.Information("Create a response. Response Body: {responseBody}", responseBody);
 
-        // Response
-        return response;
+            // Response
+            return Ok(responseBody);
+        }
+        catch (Exception e)
+        {
+            // TODO: Global Error Handler
+
+            Log.Error(e, "An error occurred.");
+            throw;
+        }
     }
 }

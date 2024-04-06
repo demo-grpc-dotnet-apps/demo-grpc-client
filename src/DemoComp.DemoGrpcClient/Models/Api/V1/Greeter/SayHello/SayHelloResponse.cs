@@ -1,7 +1,7 @@
-namespace DemoComp.DemoGrpcClient.Models.Greeter.SayHello;
+namespace DemoComp.DemoGrpcClient.Models.Api.V1.Greeter.SayHello;
 
 [ToString]
-public class SayHelloResponse(string name)
+public class SayHelloResponse(string message)
 {
-    public string Name { get; } = name;
+    public string Message { get; } = message;
 }

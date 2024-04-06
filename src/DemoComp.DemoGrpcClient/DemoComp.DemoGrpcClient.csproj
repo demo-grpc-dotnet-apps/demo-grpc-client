@@ -25,49 +25,27 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
     <PackageReference Include="ToString.Fody" Version="1.11.1" PrivateAssets="All"/>
   </ItemGroup>
-
-
+  
   <ItemGroup>
-    <Content Include="..\..\proto\serveces\Greeter.proto">
-      <Link>proto\serveces\Greeter.proto</Link>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Protobuf Include="..\..\proto\messages\HelloReply.proto">
-      <GrpcServices>Client</GrpcServices>
-      <Access>Public</Access>
-      <ProtoCompile>True</ProtoCompile>
-      <CompileOutputs>True</CompileOutputs>
-      <OutputDir>obj/Debug/net8.0/</OutputDir>
-      <Generator>MSBuild:Compile</Generator>
-      <Link>proto\messages\HelloReply.proto</Link>
-    </Protobuf>
-    <Protobuf Include="..\..\proto\messages\HelloReply.proto">
-      <GrpcServices>Client</GrpcServices>
-      <Access>Public</Access>
-      <ProtoCompile>True</ProtoCompile>
-      <CompileOutputs>True</CompileOutputs>
-      <OutputDir>obj/Debug/net8.0/</OutputDir>
-      <Generator>MSBuild:Compile</Generator>
-      <Link>proto\messages\HelloReply.proto</Link>
-    </Protobuf>
-    <Protobuf Include="..\..\proto\messages\HelloRequest.proto">
+    <Protobuf Include="..\..\proto\Greeter.proto">
       <GrpcServices>Client</GrpcServices>
       <Access>Public</Access>
       <ProtoCompile>True</ProtoCompile>
       <CompileOutputs>True</CompileOutputs>
       <OutputDir>obj\Debug/net8.0/</OutputDir>
       <Generator>MSBuild:Compile</Generator>
-      <Link>proto\messages\HelloRequest.proto</Link>
+      <Link>proto\Greeter.proto</Link>
     </Protobuf>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Common\" />
+    <Folder Include="Common\Configuration\" />
     <Folder Include="Controllers\V1\" />
     <Folder Include="Models\Api\V1\" />
-    <Folder Include="Repositories\" />
-    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="appsettings.Test.json" />
   </ItemGroup>
 
 </Project>
